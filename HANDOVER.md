@@ -19,7 +19,9 @@ cp .env.example .env
 ```
 
 ### 2. Database Setup
-Ensure your Supabase/PostgreSQL instance is running, then apply the migrations. We have provided a utility script to apply all migrations in sequence:
+The platform is **Postgres-Agnostic** and can be hosted on any standard PostgreSQL instance. However, the current production implementation is hosted on **Supabase**. 
+
+To initialize the database, ensure your instance is running, then apply the migrations using our utility script:
 
 ```bash
 python3 scripts/apply_all_migrations.py
@@ -32,7 +34,7 @@ python3 scripts/apply_rls.py
 ```
 
 ### 4. Supabase Edge Functions
-The tracking pixel logic is handled by a Supabase Edge Function. To deploy it:
+The high-performance tracking pixel logic (open/click analytics) is currently handled by a **Supabase Edge Function**. While this can be ported to a standard Node.js microservice in the future, it is presently deployed to the Supabase infrastructure:
 ```bash
 # Ensure you are logged into Supabase CLI
 supabase functions deploy track --project-ref your-project-ref
