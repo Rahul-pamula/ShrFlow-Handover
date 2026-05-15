@@ -97,3 +97,13 @@
 *   **Service Decomposition:** The platform is designed to be "split" into microservices (see `platform/services/`).
 *   **Template Service:** A dedicated Node.js service for heavy MJML compilation.
 *   **Worker Isolation:** Each worker (Sender, Importer, Scheduler) runs in its own container, allowing for independent scaling based on CPU/Memory load.
+
+---
+
+## 11. Database Portability & Scaling
+**Why:** The company may want to migrate from Supabase to a standard PostgreSQL (AWS RDS, GCP Cloud SQL, or self-hosted).
+**How:**
+*   **Postgres-Agnostic Schema:** All migrations use standard SQL. There are NO dependencies on Supabase-specific extensions or proprietary features.
+*   **Decoupled from PostgREST:** The engine uses `asyncpg` (Python) and `asyncpg` (Workers) to communicate directly with the DB. It does NOT require the Supabase API layer to function.
+*   **Portable RLS:** Row Level Security is a native PostgreSQL feature. Our isolation logic (`SET LOCAL app.current_tenant_id`) will work on ANY modern PostgreSQL instance (v12+).
+*   **Standardized Migrations:** The `migrations/` directory contains raw `.sql` files that can be executed by any standard migration tool (Flyway, Liquibase, or our own `scripts/apply_all_migrations.py`).
