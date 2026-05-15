@@ -1,0 +1,77 @@
+# ShrFlow — Technical Engine Flow & Architecture
+
+> **Purpose:** This document is the primary technical onboarding guide for developers. It explains the "Why" and "How" of the system, organized by the actual lifecycle of an email campaign rather than project phases.
+
+---
+
+## 1. The Foundation: Multi-Tenant Isolation
+**Why:** In a multi-tenant SaaS, the biggest risk is "Data Leakage" (Tenant A seeing Tenant B's data).
+**How:**
+*   **The "Restaurant Kitchen" Model:** Every tenant has their own "station" (Data Isolation).
+*   **Row Level Security (RLS):** We don't rely on developers remembering `WHERE tenant_id = ...`. Instead, the database itself enforces isolation at the session level using `SET LOCAL app.current_tenant_id`.
+*   **Dual Email Engine:**
+    *   **System Pipeline (Gmail SMTP):** Used as a **temporary development baseline** for critical OTPs and Invites. (Recommendation: Migrate to a dedicated AWS SES production identity for high-volume platform alerts).
+    *   **Campaign Pipeline (AWS SES):** Isolated reputation per tenant. If one tenant spams, only *their* domain is blacklisted, never our platform.
+
+---
+
+## 2. Audience Ingestion: Handling Scale
+**Why:** Uploading 100k+ contacts via a standard API will cause timeouts and Out-of-Memory (OOM) crashes.
+**How:**
+*   **S3-First Streaming:** The UI gets a pre-signed URL to upload directly to S3. The API never touches the heavy bytes.
+*   **RabbitMQ Worker Cluster:** An async `import_worker` pulls the file from S3 and parses it in chunks.
+*   **Deduplication:** We use PostgreSQL `ON CONFLICT` logic to merge data instead of creating duplicates.
+
+---
+
+## 3. Creative Suite: The Template Engine
+**Why:** Email HTML is "broken" by default (Outlook vs. Gmail).
+**How:**
+*   **DesignJSON Source of Truth:** We save a structured JSON object, not messy HTML.
+*   **MJML Compilation:** The backend compiles JSON into MJML, then into highly compatible nested-table HTML.
+*   **The Validation Gateway:** Before a campaign can even be saved, the "Safety Check" scans for missing unsubscribe links and Gmail's 102KB clipping limit.
+
+---
+
+## 4. Campaign Orchestration: The "Heart" of the Engine
+**Why:** A campaign is a complex state machine that must be resumable if a server restarts.
+**How:**
+*   **Content Snapshotting:** The moment a campaign is "Sent," we freeze the template. This prevents a user from editing a template *while* the email is mid-flight.
+*   **The Fan-out:** We don't push 100k emails to the queue at once. We stream the recipient list and push "Task IDs" into RabbitMQ.
+*   **State Machine:**
+    *   `DRAFT` → `SCHEDULED` → `SENDING` → `COMPLETED`
+    *   Includes `PAUSED` and `CANCELLED` for real-time control.
+
+---
+
+## 5. Governance & Enterprise Controls (RBAC & Franchise)
+**Why:** Large companies need complex permissions (Admin can see everything, Creator can only draft).
+**How:**
+*   **RBAC (Role Based Access Control):** A granular permission matrix (`can('edit_campaign')`) enforced at both the UI and API levels.
+*   **Franchise Governance:** A "Parent-Child" tenant model. A Parent can push templates and "Master Audiences" down to child branches.
+*   **Audit Logging:** Every destructive action (Delete, Send, Change Role) is recorded in an immutable log for security audits.
+
+---
+
+## 6. The Sending Pipeline: Deliverability & Protection
+**Why:** Sending too fast gets you blocked; sending too slow makes the user unhappy.
+**How:**
+*   **Persistent SMTP Sessions:** We reuse connections to AWS SES to avoid the "Handshake Penalty" (1s per email down to 50ms).
+*   **Backpressure:** RabbitMQ prefetch limits ensure workers don't get overwhelmed.
+*   **The Kill Switch:** Every worker checks Redis before sending. If you click "Pause" in the dashboard, the workers stop in milliseconds.
+
+---
+
+## 7. Analytics & Insights: Truthful Observability
+**Why:** Bots (Apple MPP, Security Scanners) "open" every email, making stats look fake.
+**How:**
+*   **Engagement Intelligence:** We use User-Agent heuristics to flag "Bot Opens" and hide them from the vanity metrics.
+*   **HMAC Signing:** All tracking pixels and click-links are cryptographically signed to prevent "Link Probing" from inflating stats.
+
+---
+
+## 8. Monetization: Billing & Enforcement
+**Why:** We must stop users from sending more than they paid for.
+**How:**
+*   **Plan Enforcement:** A middleware that checks usage counters before allowing a campaign to start.
+*   **Stripe Integration:** Unified billing and subscription management tied directly to the tenant's limits.
