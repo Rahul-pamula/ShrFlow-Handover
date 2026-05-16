@@ -36,9 +36,10 @@ ShrFlow is a **full-scale, self-hosted email marketing platform** — designed a
 
 ShrFlow uses a complex asynchronous dual-pipeline architecture. To understand the system logic before diving into the code, please follow this reading order:
 
-1.  🚀 **[ENGINE_FLOW.md](docs/plan/ENGINE_FLOW.md)**: **Start here.** This explains the "Why" and "How" of the system lifecycle (Isolation, Ingestion, Orchestration, and Delivery).
-2.  📘 **[Architectural Deep-Dive](docs/plan/overview.md)**: Detailed diagrams and technical snapshots of every system component.
-3.  📋 **[Phase-by-Phase Roadmap](docs/plan/phase_wise_plan.md)**: The full strategic execution history from Phase 0 to Phase 17.
+1.  📚 **[Official Documentation (Mintlify)](https://shrflow.mintlify.app/)**: **Start here.** Check out our live, interactive documentation for quick starts, API references, and architecture deep-dives.
+2.  🚀 **[ENGINE_FLOW.md](docs/plan/ENGINE_FLOW.md)**: Explains the "Why" and "How" of the system lifecycle (Isolation, Ingestion, Orchestration, and Delivery).
+3.  📘 **[Architectural Deep-Dive](docs/plan/overview.md)**: Detailed diagrams and technical snapshots of every system component.
+4.  📋 **[Phase-by-Phase Roadmap](docs/plan/phase_wise_plan.md)**: The full strategic execution history from Phase 0 to Phase 17.
 
 ---
 
