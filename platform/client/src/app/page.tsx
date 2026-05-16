@@ -58,23 +58,57 @@ const featureCards = [
 
 const pricingTiers = [
   {
-    name: 'Starter',
-    price: '$49',
-    description: 'For small product teams launching their first reliable sending setup.',
-    bullets: ['Up to 25k monthly sends', 'Contacts and suppression controls', 'Domain verification and API keys'],
+    name: 'Free',
+    price: '₹0',
+    description: 'For individuals exploring reliable sending infrastructure.',
+    bullets: [
+      '500 contacts',
+      '1,000 emails/mo',
+      '1 user / 1 domain',
+      'Basic analytics',
+      'Essential templates',
+      'Community support',
+    ],
   },
   {
-    name: 'Growth',
-    price: '$199',
-    description: 'For B2B teams running campaigns, analytics, and tenant-level infrastructure.',
-    bullets: ['Advanced campaign orchestration', 'Deliverability monitoring', 'Team roles and operational controls'],
+    name: 'Starter',
+    price: '₹799',
+    description: 'For small product teams launching their first reliable setup.',
+    bullets: [
+      '5,000 contacts',
+      '25,000 emails/mo',
+      '3 users / 3 domains',
+      'Basic automation',
+      'Segmentation',
+      'Email support',
+    ],
+  },
+  {
+    name: 'Pro',
+    price: '₹2,499',
+    description: 'For B2B teams running campaigns and advanced infrastructure.',
+    bullets: [
+      '50,000 contacts',
+      '150,000 emails/mo',
+      'Unlimited users/domains',
+      'API access',
+      'Advanced automation',
+      'Priority support',
+    ],
     featured: true,
   },
   {
     name: 'Enterprise',
-    price: 'Custom',
-    description: 'For high-volume organizations needing tighter governance and scale planning.',
-    bullets: ['Custom limits and support', 'Governance and compliance workflows', 'Shared rollout planning'],
+    price: '₹9,999',
+    description: 'For high-volume organizations needing tighter governance.',
+    bullets: [
+      '500,000+ contacts',
+      '1,000,000+ emails/mo',
+      'Dedicated IP',
+      'SLA & SSO/SAML',
+      '24/7 dedicated support',
+      'Custom scaling',
+    ],
   },
 ];
 
@@ -236,22 +270,22 @@ export default function LandingPage() {
                   <div className="grid gap-4 sm:grid-cols-2">
                     <div className="rounded-2xl border border-slate-800 bg-slate-950/60 p-4">
                       <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Audience</p>
-                      <p className="mt-3 text-2xl font-semibold text-white">48,210</p>
-                      <p className="mt-2 text-sm text-slate-400">Suppression and invalid contacts already filtered out.</p>
+                      <p className="mt-3 text-2xl font-semibold text-white">49,820</p>
+                      <p className="mt-2 text-sm text-slate-400">99% of your 50,000 Pro contact limit used.</p>
                     </div>
                     <div className="rounded-2xl border border-slate-800 bg-slate-950/60 p-4">
                       <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Domain health</p>
                       <p className="mt-3 text-2xl font-semibold text-white">Verified</p>
-                      <p className="mt-2 text-sm text-slate-400">SPF, DKIM, and compliance checks passing.</p>
+                      <p className="mt-2 text-sm text-slate-400">SPF, DKIM, and DMARC checks active.</p>
                     </div>
                   </div>
 
                   <div className="rounded-2xl border border-slate-800 bg-slate-950/60 p-4 font-mono text-[13px] leading-7 text-slate-300">
-                    <div><span className="text-sky-300">campaign</span>.<span className="text-indigo-300">send</span>({'{'}</div>
-                    <div className="pl-6">template: <span className="text-emerald-300">'spring-launch'</span>,</div>
-                    <div className="pl-6">segment: <span className="text-emerald-300">'active-buyers'</span>,</div>
-                    <div className="pl-6">scheduleAt: <span className="text-amber-300">'2026-04-29T14:00:00Z'</span>,</div>
-                    <div className="pl-6">deliverabilityGuard: <span className="text-sky-300">true</span>,</div>
+                    <div><span className="text-sky-300">shrflow</span>.<span className="text-indigo-300">campaigns</span>.<span className="text-indigo-300">trigger</span>({'{'}</div>
+                    <div className="pl-6">id: <span className="text-emerald-300">'product-launch-v2'</span>,</div>
+                    <div className="pl-6">priority: <span className="text-amber-300">'high'</span>,</div>
+                    <div className="pl-6">throttle: <span className="text-amber-300">'5000/hr'</span>,</div>
+                    <div className="pl-6">guard: <span className="text-sky-300">true</span></div>
                     <div>{'}'});</div>
                   </div>
                 </div>
