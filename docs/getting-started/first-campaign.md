@@ -9,9 +9,7 @@ icon: 'paper-plane'
 
 ## Step 1: Campaign Setup
 
-<Frame>
-  <img src="/docs/screenshots/campaign-builder.png" alt="Create New Campaign" />
-</Frame>
+![Create New Campaign](/docs/screenshots/campaign-builder.png)
 
 * **What you should do:** Go to **Campaigns > New Campaign**. Add a Subject Line and select your verified domain.
 * **Expected Result:** You are taken to the design step.
@@ -19,9 +17,7 @@ icon: 'paper-plane'
 
 ## Step 2: Design Your Email
 
-<Frame>
-  <img src="/docs/screenshots/templates-gallery.png" alt="Templates Gallery" />
-</Frame>
+![Templates Gallery](/docs/screenshots/templates-gallery.png)
 
 * **What you should do:** Use the drag-and-drop builder to add text and images.
 * **Expected Result:** Your email looks great on the preview screen.
