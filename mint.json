@@ -19,39 +19,39 @@
     {
       "group": "Overview",
       "pages": [
-        "introduction"
+        "docs/introduction"
       ]
     },
     {
       "group": "Getting Started",
       "pages": [
-        "getting-started/quick-start",
-        "getting-started/verify-domain",
-        "getting-started/first-campaign"
+        "docs/getting-started/quick-start",
+        "docs/getting-started/verify-domain",
+        "docs/getting-started/first-campaign"
       ]
     },
     {
       "group": "Core Concepts",
       "pages": [
-        "advanced/deliverability-engine",
-        "advanced/webhooks",
-        "advanced/rbac-security"
+        "docs/advanced/deliverability-engine",
+        "docs/advanced/webhooks",
+        "docs/advanced/rbac-security"
       ]
     },
     {
       "group": "API Reference",
       "pages": [
-        "api-reference/authentication",
-        "api-reference/campaigns",
-        "api-reference/contacts"
+        "docs/api-reference/authentication",
+        "docs/api-reference/campaigns",
+        "docs/api-reference/contacts"
       ]
     },
     {
       "group": "Troubleshooting",
       "pages": [
-        "troubleshooting/common-issues",
-        "troubleshooting/domain-issues",
-        "troubleshooting/csv-import"
+        "docs/troubleshooting/common-issues",
+        "docs/troubleshooting/domain-issues",
+        "docs/troubleshooting/csv-import"
       ]
     }
   ]
