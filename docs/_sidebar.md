@@ -1,5 +1,6 @@
 <!-- docs/_sidebar.md -->
 
+
 * **Home**
   * [Introduction](introduction.md)
   * [Visual Tour of Platform](screen-shots/README.md)

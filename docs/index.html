@@ -26,6 +26,15 @@
       --heading-color: #0f172a; /* Slate 900 titles */
       --strong-color: #0f172a;
       
+      /* Cover Page Variables for High Visibility in White Theme */
+      --cover-background: radial-gradient(circle at 50% 50%, #ffffff 0%, #f8fafc 100%) !important;
+      --cover-color: #475569 !important;
+      --cover-heading-color: #0f172a !important;
+      --cover-blockquote-color: #64748b !important;
+      --cover-button-background: #4f46e5 !important;
+      --cover-button-border: 1.5px solid #4f46e5 !important;
+      --cover-button-color: #ffffff !important;
+      
       /* Sidebar */
       --sidebar-background: rgba(255, 255, 255, 0.85); /* Glassmorphic White */
       --sidebar-name-color: #0f172a;
@@ -268,7 +277,6 @@
       background: #4f46e5;
     }
     
-    /* Mermaid diagram container style */
     .mermaid {
       background: #f8fafc !important;
       border-radius: 12px;
@@ -277,6 +285,8 @@
       margin: 2rem 0;
       display: flex;
       justify-content: center;
+    }
+    
     /* Premium Card Grid for Light/White Theme */
     .card-grid {
       display: grid;
@@ -462,10 +472,27 @@
     }
     
     /* Sidebar Brand Logo and Name Styling */
+    .sidebar h1.app-name {
+      margin: 1.75rem 0 1.25rem 0 !important;
+      padding: 0 1.5rem !important;
+      text-align: left !important;
+    }
+    
+    .sidebar .app-name-link {
+      display: flex !important;
+      align-items: center !important;
+      gap: 0.75rem !important;
+      text-decoration: none !important;
+      color: #0f172a !important;
+      justify-content: flex-start !important;
+    }
+    
     .sidebar .app-name-link img {
-      max-width: 75px;
-      margin: 1.5rem auto 0.5rem auto;
-      display: block;
+      width: 32px !important;
+      height: 32px !important;
+      max-width: 32px !important;
+      margin: 0 !important;
+      display: inline-block !important;
       border: none !important;
       box-shadow: none !important;
       background: transparent !important;
@@ -473,21 +500,20 @@
     }
     
     .sidebar .app-name-link img:hover {
-      transform: scale(1.05) rotate(1deg);
+      transform: scale(1.1) rotate(5deg);
     }
     
-    .sidebar .app-name {
-      display: block !important; /* Display text since the logo is a symbol */
+    .sidebar .app-name-link::after {
+      content: "ShrFlow";
+      display: inline-block !important;
       font-size: 1.4rem !important;
       font-weight: 700 !important;
-      text-align: center !important;
       color: #0f172a !important;
-      margin-top: 0.5rem !important;
-      margin-bottom: 1.25rem !important;
-      background: linear-gradient(135deg, #1e3a8a 0%, #4f46e5 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      background: linear-gradient(135deg, #1e3a8a 0%, #4f46e5 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
       letter-spacing: -0.03em !important;
+      line-height: 1 !important;
     }
   </style>
 </head>
