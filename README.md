@@ -36,10 +36,15 @@ ShrFlow is a **full-scale, self-hosted email marketing platform** — designed a
 
 ShrFlow uses a complex asynchronous dual-pipeline architecture. To understand the system logic before diving into the code, please follow this reading order:
 
-1.  📚 **[Official Documentation (Mintlify)](https://shrflow.mintlify.app/)**: **Start here.** Check out our live, interactive documentation for quick starts, API references, and architecture deep-dives.
-2.  🚀 **[ENGINE_FLOW.md](docs/plan/ENGINE_FLOW.md)**: Explains the "Why" and "How" of the system lifecycle (Isolation, Ingestion, Orchestration, and Delivery).
-3.  📘 **[Architectural Deep-Dive](docs/plan/overview.md)**: Detailed diagrams and technical snapshots of every system component.
-4.  📋 **[Phase-by-Phase Roadmap](docs/plan/phase_wise_plan.md)**: The full strategic execution history from Phase 0 to Phase 17.
+1.  📚 **[Official Documentation (GitHub Pages & Docsify)](docs/)**: **Start here.** The documentation directory `docs/` is a modern, zero-config SPA powered by **Docsify**. It can be deployed directly to GitHub Pages or viewed locally.
+    - To preview the documentation locally with hot-reloading:
+      ```bash
+      npx docsify-cli serve docs --port 4000
+      ```
+2.  🎨 **[Visual Platform Tour & Codebase Mapping](docs/screen-shots/README.md)**: Instantly view all 22 page screens, settings tabs, and modals mapped to their exact Next.js route components and files.
+3.  🚀 **[ENGINE_FLOW.md](docs/plan/ENGINE_FLOW.md)**: Explains the "Why" and "How" of the system lifecycle (Isolation, Ingestion, Orchestration, and Delivery).
+4.  📘 **[Architectural Deep-Dive](docs/plan/overview.md)**: Detailed diagrams and technical snapshots of every system component.
+5.  📋 **[Phase-by-Phase Roadmap](docs/plan/phase_wise_plan.md)**: The full strategic execution history from Phase 0 to Phase 17.
 
 ---
 

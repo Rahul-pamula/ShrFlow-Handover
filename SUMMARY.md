@@ -1,7 +1,7 @@
 # Summary
 
-* [Introduction](docs/introduction.mdx)
-* [Visual Tour](docs/screenshots/README.md)
+* [Introduction](docs/introduction.md)
+* [Visual Tour](docs/screen-shots/README.md)
 
 ## Getting Started
 * [Quick Start](docs/getting-started/quick-start.md)
@@ -15,16 +15,16 @@
 * [Data Seeding](docs/infrastructure/seeding.md)
 
 ## Advanced Architecture
-* [Deliverability Engine](docs/advanced/deliverability-engine.mdx)
-* [Webhooks & Events](docs/advanced/webhooks.mdx)
-* [RBAC & Security](docs/advanced/rbac-security.mdx)
-* [Database & RLS](docs/advanced/database-rls.mdx)
+* [Deliverability Engine](docs/advanced/deliverability-engine.md)
+* [Webhooks & Events](docs/advanced/webhooks.md)
+* [RBAC & Security](docs/advanced/rbac-security.md)
+* [Database & RLS](docs/advanced/database-rls.md)
 * [Plans & Billing](docs/advanced/plans-and-billing.md)
 
 ## API Reference
-* [Authentication](docs/api-reference/authentication.mdx)
-* [Campaigns](docs/api-reference/campaigns.mdx)
-* [Contacts](docs/api-reference/contacts.mdx)
+* [Authentication](docs/api-reference/authentication.md)
+* [Campaigns](docs/api-reference/campaigns.md)
+* [Contacts](docs/api-reference/contacts.md)
 
 ## Troubleshooting
 * [Common Issues](docs/troubleshooting/common-issues.md)

@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ShrFlow Documentation — Enterprise Email Engine</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="High-performance, self-hosted, multi-tenant email marketing platform documentation.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono&display=swap">
+  
+  <!-- Theme Stylesheet (Modern Light/White styling) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css">
+  
+  <!-- Custom Overrides for Premium Light/White Aesthetic -->
+  <style>
+    :root {
+      /* Color Palette Overrides */
+      --theme-color: #4f46e5; /* Modern Electric Indigo Accent */
+      --theme-color-rgb: 79, 70, 229;
+      
+      /* Global Background & Content */
+      --base-background-color: #ffffff; /* Crisp white */
+      --base-color: #475569; /* Slate 600 modern gray text */
+      --heading-color: #0f172a; /* Slate 900 titles */
+      --strong-color: #0f172a;
+      
+      /* Sidebar */
+      --sidebar-background: rgba(255, 255, 255, 0.85); /* Glassmorphic White */
+      --sidebar-name-color: #0f172a;
+      --sidebar-name-font-weight: 700;
+      --sidebar-nav-link-color: #64748b;
+      --sidebar-nav-link-color--active: #4f46e5;
+      --sidebar-nav-link-color--hover: #0f172a;
+      --sidebar-border-width: 1px;
+      --sidebar-border-color: rgba(0, 0, 0, 0.06);
+      --sidebar-width: 19rem;
+      
+      /* Layout & Spacing */
+      --content-max-width: 62em;
+      --base-font-family: 'Outfit', sans-serif;
+      --code-font-family: 'JetBrains Mono', monospace;
+      --base-font-size: 16px;
+      --base-line-height: 1.625;
+      
+      /* Tables */
+      --table-border-color: rgba(0, 0, 0, 0.06);
+      --table-head-background: rgba(241, 245, 249, 0.8);
+      --table-head-color: #0f172a;
+      --table-row-odd-background: rgba(248, 250, 252, 0.5);
+      --table-row-even-background: transparent;
+      
+      /* Code & Syntax */
+      --code-inline-background: rgba(79, 70, 229, 0.05);
+      --code-inline-color: #4f46e5;
+      --code-theme-background: #f8fafc;
+      --code-theme-border-radius: 12px;
+    }
+    
+    body {
+      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 50%, #f1f5f9 100%);
+      background-attachment: fixed;
+      font-smoothing: antialiased;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    .sidebar {
+      background: rgba(255, 255, 255, 0.8) !important;
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border-right: 1px solid rgba(0, 0, 0, 0.06);
+      box-shadow: 5px 0 25px rgba(0, 0, 0, 0.02);
+    }
+    
+    /* Typography polish */
+    .markdown-section {
+      background: transparent !important;
+      color: #475569;
+    }
+    
+    .markdown-section h1 {
+      font-size: 2.75rem !important;
+      font-weight: 700 !important;
+      background: linear-gradient(135deg, #1e3a8a 0%, #4f46e5 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.03em;
+    }
+    
+    .markdown-section h2 {
+      font-size: 1.85rem !important;
+      font-weight: 600 !important;
+      color: #0f172a;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      padding-bottom: 0.5rem;
+      margin-top: 2.5rem;
+      letter-spacing: -0.02em;
+    }
+    
+    .markdown-section h3 {
+      font-size: 1.35rem !important;
+      color: #1e293b;
+      margin-top: 2rem;
+      letter-spacing: -0.01em;
+    }
+    
+    /* Inline code style */
+    .markdown-section code:not([class*="lang-"]):not([class*="language-"]) {
+      font-family: var(--code-font-family);
+      border-radius: 6px;
+      padding: 0.2rem 0.45rem;
+      background: rgba(79, 70, 229, 0.05) !important;
+      color: #4f46e5 !important;
+      font-size: 0.88em;
+      border: 1px solid rgba(79, 70, 229, 0.12);
+    }
+    
+    /* Code block styling (Terminal styling) */
+    .markdown-section pre {
+      background: #f8fafc !important;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      border-radius: 12px !important;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
+      position: relative;
+      padding-top: 2.5rem !important;
+      margin: 2rem 0;
+    }
+    
+    .markdown-section pre::before {
+      content: "•••";
+      position: absolute;
+      top: 0.8rem;
+      left: 1.25rem;
+      color: #94a3b8;
+      font-size: 1.3rem;
+      letter-spacing: 2px;
+      line-height: 1;
+    }
+    
+    .markdown-section pre > code {
+      font-family: var(--code-font-family);
+      font-size: 0.9rem !important;
+      background: transparent !important;
+      border: none !important;
+      color: #1e293b;
+    }
+    
+    /* Custom style for images in documentation */
+    .markdown-section img {
+      border-radius: 10px;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+      margin: 2rem 0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .markdown-section img:hover {
+      transform: scale(1.01);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Tables */
+    .markdown-section table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      border-radius: 8px;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      overflow: hidden;
+      margin: 2rem 0;
+    }
+    
+    .markdown-section th {
+      background-color: rgba(241, 245, 249, 0.8) !important;
+      color: #0f172a !important;
+      font-weight: 600;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      padding: 0.85rem 1.1rem;
+    }
+    
+    .markdown-section td {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+      padding: 0.85rem 1.1rem;
+      color: #475569;
+    }
+    
+    .markdown-section tr:last-child td {
+      border-bottom: none;
+    }
+    
+    .markdown-section tr:nth-child(even) {
+      background-color: rgba(248, 250, 252, 0.6);
+    }
+    
+    .markdown-section tr:hover {
+      background-color: rgba(0, 0, 0, 0.015);
+    }
+    
+    /* Lists */
+    .markdown-section ul {
+      padding-left: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .markdown-section li {
+      margin-bottom: 0.5rem;
+      line-height: 1.65;
+    }
+    
+    /* Sidebar Navigation Links */
+    .sidebar-nav li a {
+      border-radius: 6px;
+      margin: 2px 10px;
+      padding: 7px 14px !important;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+      font-size: 0.94rem;
+    }
+    
+    .sidebar-nav li a:hover {
+      background: rgba(0, 0, 0, 0.03) !important;
+      color: #0f172a !important;
+      padding-left: 18px !important;
+    }
+    
+    .sidebar-nav li.active > a {
+      background: rgba(79, 70, 229, 0.06) !important;
+      border-left: 3px solid #4f46e5 !important;
+      color: #4f46e5 !important;
+      font-weight: 600 !important;
+    }
+    
+    /* Search Bar Input */
+    .search input {
+      background: rgba(255, 255, 255, 0.9) !important;
+      border: 1px solid rgba(0, 0, 0, 0.08) !important;
+      border-radius: 8px !important;
+      color: #0f172a !important;
+      padding: 9px 12px !important;
+      font-family: inherit;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+    }
+    
+    .search input:focus {
+      border-color: #4f46e5 !important;
+      box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.15);
+      outline: none;
+    }
+    
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: #ffffff;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: #e2e8f0;
+      border-radius: 4px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: #4f46e5;
+    }
+    
+    /* Mermaid diagram container style */
+    .mermaid {
+      background: #f8fafc !important;
+      border-radius: 12px;
+      padding: 1.5rem;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      margin: 2rem 0;
+      display: flex;
+      justify-content: center;
+    /* Premium Card Grid for Light/White Theme */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    .card {
+      background: rgba(255, 255, 255, 0.8) !important;
+      border: 1px solid rgba(0, 0, 0, 0.05) !important;
+      border-radius: 12px !important;
+      padding: 1.5rem !important;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.01) !important;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+      text-decoration: none !important;
+      color: inherit !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 0.5rem !important;
+    }
+    
+    .card:hover {
+      transform: translateY(-4px) !important;
+      box-shadow: 0 12px 25px rgba(79, 70, 229, 0.08) !important;
+      border-color: rgba(79, 70, 229, 0.25) !important;
+    }
+    
+    .card h4 {
+      margin: 0 !important;
+      font-size: 1.15rem !important;
+      font-weight: 600 !important;
+      color: #0f172a !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 0.5rem !important;
+    }
+    
+    .card h4 span {
+      font-size: 1.25rem !important;
+    }
+    
+    .card p {
+      margin: 0 !important;
+      font-size: 0.9rem !important;
+      color: #64748b !important;
+      line-height: 1.5 !important;
+    }
+    
+    /* Premium Coverpage Styles for Crisp White Theme */
+    section.cover {
+      background: radial-gradient(circle at 50% 50%, #ffffff 0%, #f8fafc 100%) !important;
+    }
+    
+    section.cover .cover-main {
+      color: #334155 !important;
+    }
+    
+    section.cover img {
+      max-width: 140px;
+      margin-bottom: 0.5rem;
+      border: none !important;
+      box-shadow: none !important;
+      background: transparent !important;
+      transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    section.cover img:hover {
+      transform: scale(1.08) rotate(3deg) !important;
+      box-shadow: none !important;
+    }
+    
+    section.cover h1 {
+      font-size: 3.4rem !important;
+      font-weight: 800 !important;
+      color: #0f172a !important;
+      letter-spacing: -0.04em !important;
+      margin-bottom: 0.75rem !important;
+      position: relative;
+    }
+    
+    section.cover h1 span {
+      background: linear-gradient(135deg, #1e3a8a 0%, #4f46e5 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    section.cover h1 small {
+      font-size: 1.1rem !important;
+      font-weight: 500 !important;
+      color: #64748b !important;
+      letter-spacing: 0.1em !important;
+      text-transform: uppercase;
+      display: block;
+      margin-top: 0.5rem;
+    }
+    
+    section.cover blockquote {
+      font-size: 1.1rem !important;
+      color: #475569 !important;
+      border: none !important;
+      font-style: normal !important;
+      margin: 1.25rem 0 !important;
+      padding: 0 !important;
+      line-height: 1.5;
+    }
+    
+    section.cover ul {
+      list-style: none !important;
+      padding: 0 !important;
+      display: flex !important;
+      flex-wrap: wrap !important;
+      justify-content: center !important;
+      gap: 1rem !important;
+      margin: 2.25rem auto !important;
+      max-width: 800px;
+    }
+    
+    section.cover li {
+      background: rgba(255, 255, 255, 0.75) !important;
+      border: 1px solid rgba(226, 232, 240, 0.8) !important;
+      border-radius: 12px !important;
+      padding: 0.65rem 1.15rem !important;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.015) !important;
+      font-size: 0.88rem !important;
+      color: #475569 !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 0.5rem !important;
+      backdrop-filter: blur(8px) !important;
+      transition: all 0.2s ease;
+    }
+    
+    section.cover li:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03) !important;
+      border-color: rgba(79, 70, 229, 0.2) !important;
+    }
+    
+    section.cover li strong {
+      color: #4f46e5 !important;
+      font-weight: 600;
+    }
+    
+    section.cover p a {
+      border: 1.5px solid #4f46e5 !important;
+      border-radius: 8px !important;
+      padding: 0.7rem 1.5rem !important;
+      font-weight: 600 !important;
+      font-size: 0.95rem !important;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+      text-decoration: none !important;
+      margin: 0.5rem !important;
+      display: inline-block !important;
+    }
+    
+    /* Cover primary link styling */
+    section.cover p a[href="#introduction"] {
+      background: #4f46e5 !important;
+      color: #ffffff !important;
+      box-shadow: 0 4px 14px rgba(79, 70, 229, 0.25) !important;
+    }
+    
+    section.cover p a[href="#introduction"]:hover {
+      background: #4338ca !important;
+      border-color: #4338ca !important;
+      box-shadow: 0 6px 20px rgba(79, 70, 229, 0.35) !important;
+      transform: translateY(-2px) !important;
+    }
+    
+    /* Cover secondary link styling */
+    section.cover p a:not([href="#introduction"]) {
+      background: rgba(255, 255, 255, 0.8) !important;
+      color: #4f46e5 !important;
+      border-color: rgba(79, 70, 229, 0.3) !important;
+      backdrop-filter: blur(4px) !important;
+    }
+    
+    section.cover p a:not([href="#introduction"]):hover {
+      background: rgba(79, 70, 229, 0.05) !important;
+      border-color: #4f46e5 !important;
+      transform: translateY(-2px) !important;
+    }
+    
+    /* Sidebar Brand Logo and Name Styling */
+    .sidebar .app-name-link img {
+      max-width: 75px;
+      margin: 1.5rem auto 0.5rem auto;
+      display: block;
+      border: none !important;
+      box-shadow: none !important;
+      background: transparent !important;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    .sidebar .app-name-link img:hover {
+      transform: scale(1.05) rotate(1deg);
+    }
+    
+    .sidebar .app-name {
+      display: block !important; /* Display text since the logo is a symbol */
+      font-size: 1.4rem !important;
+      font-weight: 700 !important;
+      text-align: center !important;
+      color: #0f172a !important;
+      margin-top: 0.5rem !important;
+      margin-bottom: 1.25rem !important;
+      background: linear-gradient(135deg, #1e3a8a 0%, #4f46e5 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.03em !important;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">Loading ShrFlow Portal...</div>
+  
+  <script>
+    window.$docsify = {
+      name: 'ShrFlow',
+      repo: 'https://github.com/Rahul-pamula/ShrFlow-Handover',
+      loadSidebar: true,
+      logo: 'assets/shrflow-logo.svg',
+      subMaxLevel: 3,
+      coverpage: true,
+      auto2top: true,
+      search: {
+        maxAge: 86400000,
+        paths: 'auto',
+        placeholder: 'Search documentation...',
+        noData: 'No results found!',
+        depth: 6
+      },
+      copyCode: {
+        buttonText : 'Copy',
+        errorText  : 'Error',
+        successText: 'Copied'
+      },
+      markdown: {
+        renderer: {
+          code: function(code, lang) {
+            if (lang === "mermaid") {
+              return (
+                '<div class="mermaid">' + mermaid.render('mermaid-svg-' + num++, code) + "</div>"
+              );
+            }
+            return this.origin.code.apply(this, arguments);
+          }
+        }
+      }
+    };
+    
+    var num = 0;
+  </script>
+  
+  <!-- Required JS -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+  
+  <!-- Mermaid.js for architecture diagrams -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({ startOnLoad: false, theme: 'default' });
+  </script>
+</body>
+</html>

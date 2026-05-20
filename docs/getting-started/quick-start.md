@@ -7,7 +7,7 @@ icon: 'bolt'
 **Goal:** Send your first campaign.  
 **Estimated Time:** 10 Minutes
 
-![Launch Checklist](/docs/screenshots/dashboard-checklist.png)
+![Launch Checklist](../screen-shots/dashboard.png)
 
 ## 1. Login to Your Workspace
 * **What you should do:** Go to the login page and sign in with your work email.
@@ -21,7 +21,7 @@ icon: 'bolt'
 
 ## 3. Import Contacts
 
-![Contacts Management](/docs/screenshots/contacts-page.png)
+![Contacts Management](../screen-shots/contacts-import-history.png)
 
 * **What you should do:** Go to **Audience > Import** and upload your CSV file.
 * **Expected Result:** Contacts are imported successfully.
