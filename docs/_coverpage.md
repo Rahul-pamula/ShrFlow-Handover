@@ -12,4 +12,4 @@
 - 🛡️ **Row-Level Security** — PostgreSQL multi-tenant isolation
 - 🔌 **REST API** — Full programmatic access to all platform features
 
-[Get Started →](#introduction) [View on GitHub ↗](https://github.com/Rahul-pamula/ShrFlow-Handover)
+[Get Started →](#/README) [View on GitHub ↗](https://github.com/Rahul-pamula/ShrFlow-Handover)
