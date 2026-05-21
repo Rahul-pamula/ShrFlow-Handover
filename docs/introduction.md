@@ -97,6 +97,6 @@ ShrFlow is fully containerized, stateless at the edge, and built for horizontal 
 
 Ready to dive in? Start with the guided onboarding:
 
-1. [Visual Tour →](#/screen-shots/README) — See every screen of the platform
-2. [Quick Start →](#/getting-started/quick-start) — Run ShrFlow locally
-3. [First Campaign →](#/getting-started/first-campaign) — Send your first email
+1. [Visual Tour →](screen-shots/README.md) — See every screen of the platform
+2. [Quick Start →](getting-started/quick-start.md) — Run ShrFlow locally
+3. [First Campaign →](getting-started/first-campaign.md) — Send your first email
