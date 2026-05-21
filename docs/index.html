@@ -217,14 +217,31 @@ body{
 .markdown-section p{
   margin:0 0 1.15rem !important;line-height:1.75 !important;color:var(--gray-600) !important;
 }
-.markdown-section a{
+.markdown-section p a,
+.markdown-section li a,
+.markdown-section td a,
+.markdown-section .callout a {
   color:var(--p) !important;
   text-decoration:underline;
   text-decoration-color:rgba(79,70,229,.3);
   text-underline-offset:2px;
   transition:text-decoration-color .15s ease;
 }
-.markdown-section a:hover{text-decoration-color:var(--p)}
+.markdown-section p a:hover,
+.markdown-section li a:hover,
+.markdown-section td a:hover,
+.markdown-section .callout a:hover {
+  text-decoration-color:var(--p);
+}
+.markdown-section h1 a,
+.markdown-section h2 a,
+.markdown-section h3 a,
+.markdown-section h4 a,
+.markdown-section h5 a,
+.markdown-section h6 a {
+  color: inherit !important;
+  text-decoration: none !important;
+}
 .markdown-section strong{color:var(--gray-900);font-weight:600}
 .markdown-section hr{
   border:none !important;border-top:1px solid var(--gray-200) !important;margin:2rem 0 !important;
@@ -553,7 +570,7 @@ body{
       coverpage:   false,        /* OFF — hero is in README.md, no routing bugs */
       auto2top:    true,
       homepage:      'README.md',
-      notFoundPage:  '_404.md',
+      notFoundPage:  true,
 
       search: {
         maxAge:      86400000,
