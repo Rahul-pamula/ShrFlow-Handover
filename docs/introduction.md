@@ -1,32 +1,102 @@
----
-title: 'Introduction'
-description: 'The high-performance email delivery engine for modern software teams.'
-icon: 'book-open'
----
+# Introduction
 
-ShrFlow is an enterprise-grade email infrastructure platform. Built on top of Next.js, FastAPI, RabbitMQ, and Supabase, it provides unparalleled performance for managing audiences, designing templates, and dispatching multi-million-contact email campaigns.
+ShrFlow is an enterprise-grade, self-hosted email marketing platform built on Next.js, FastAPI, RabbitMQ, and PostgreSQL. It gives engineering teams full ownership of their email infrastructure — no vendor lock-in, no per-email pricing, no black-box deliverability.
 
 ![ShrFlow Dashboard](screen-shots/dashboard.png)
 
+---
+
+## What ShrFlow Does
+
 <div class="card-grid">
   <a class="card" href="#/getting-started/quick-start">
-    <h4><span>⚡</span> Quick Start</h4>
-    <p>Launch your first campaign and verify your developer cluster in under 10 minutes.</p>
+    <div class="card-icon">🚀</div>
+    <div class="card-title">Quick Start</div>
+    <div class="card-desc">Launch your local dev cluster and send your first campaign in under 10 minutes.</div>
+    <div class="card-arrow">Get started →</div>
   </a>
   <a class="card" href="#/api-reference/authentication">
-    <h4><span>🔑</span> API Reference</h4>
-    <p>Integrate ShrFlow programmatically into your client products using REST APIs.</p>
+    <div class="card-icon">📡</div>
+    <div class="card-title">API Reference</div>
+    <div class="card-desc">Integrate ShrFlow into your products using the full REST API.</div>
+    <div class="card-arrow">View API →</div>
   </a>
   <a class="card" href="#/advanced/deliverability-engine">
-    <h4><span>⚙️</span> Engine Architecture</h4>
-    <p>Understand the low-latency dual-delivery queue and deliverability performance routing.</p>
+    <div class="card-icon">⚙️</div>
+    <div class="card-title">Delivery Engine</div>
+    <div class="card-desc">Dual-path dispatch with RabbitMQ for guaranteed, high-throughput delivery.</div>
+    <div class="card-arrow">Learn more →</div>
   </a>
   <a class="card" href="#/advanced/webhooks">
-    <h4><span>🔗</span> Real-time Webhooks</h4>
-    <p>Stream real-time email dispatch, click, and bounce tracking events.</p>
+    <div class="card-icon">🔗</div>
+    <div class="card-title">Webhooks & Events</div>
+    <div class="card-desc">Stream real-time email events — opens, clicks, bounces, and complaints.</div>
+    <div class="card-arrow">Explore →</div>
   </a>
 </div>
 
+---
+
 ## System Architecture
 
-ShrFlow is designed to be fully containerized, stateless at the edge, and highly available. It relies on horizontal scaling and message brokers to guarantee email delivery under intense load without dropping packets.
+ShrFlow is fully containerized, stateless at the edge, and built for horizontal scaling. The message broker architecture guarantees delivery under load without dropping events.
+
+```
+┌─────────────────────────────────────────────────────┐
+│                   Next.js Frontend                  │
+│          (App Router · Server Components)           │
+└───────────────────┬─────────────────────────────────┘
+                    │ REST API calls
+┌───────────────────▼─────────────────────────────────┐
+│                 FastAPI Backend                     │
+│        (Python · Async · Business Logic)            │
+└────────┬─────────────────────────┬──────────────────┘
+         │                         │
+┌────────▼────────┐    ┌───────────▼──────────────────┐
+│   PostgreSQL    │    │         RabbitMQ              │
+│  (Supabase RLS) │    │    (Campaign Dispatch Queue)  │
+└─────────────────┘    └──────────────────────────────┘
+```
+
+---
+
+## Core Principles
+
+<div class="callout info">
+  <span class="callout-icon">🏗️</span>
+  <div><strong>Self-hosted first.</strong> ShrFlow runs entirely on your infrastructure. No data leaves your environment. You own the database, the queue, and the delivery layer.</div>
+</div>
+
+<div class="callout success">
+  <span class="callout-icon">⚡</span>
+  <div><strong>Built for scale.</strong> The RabbitMQ dispatch engine handles millions of recipients per campaign with configurable concurrency and retry logic.</div>
+</div>
+
+<div class="callout warning">
+  <span class="callout-icon">🔐</span>
+  <div><strong>Multi-tenant by design.</strong> PostgreSQL Row-Level Security (RLS) enforces tenant isolation at the database layer — not in application code.</div>
+</div>
+
+---
+
+## Tech Stack
+
+| Component | Technology | Purpose |
+|-----------|-----------|---------|
+| Frontend | Next.js 14 (App Router) | Campaign management dashboard |
+| Backend | FastAPI (Python 3.11) | REST API + business logic |
+| Queue | RabbitMQ | Async email dispatch |
+| Database | PostgreSQL via Supabase | Multi-tenant data store |
+| Auth | Supabase Auth | JWT authentication + RLS |
+| Storage | Supabase Storage | Template assets |
+| Containers | Docker Compose | Local + production orchestration |
+
+---
+
+## Next Steps
+
+Ready to dive in? Start with the guided onboarding:
+
+1. [Visual Tour →](#/screen-shots/README) — See every screen of the platform
+2. [Quick Start →](#/getting-started/quick-start) — Run ShrFlow locally
+3. [First Campaign →](#/getting-started/first-campaign) — Send your first email

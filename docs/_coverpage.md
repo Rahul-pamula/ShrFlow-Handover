@@ -1,17 +1,15 @@
 <!-- docs/_coverpage.md -->
 
-![ShrFlow](assets/shrflow-logo.svg)
+![ShrFlow Logo](assets/shrflow-logo.svg)
 
 # ShrFlow <small>Enterprise Email Engine</small>
 
-> High-Performance, Self-Hosted, Multi-Tenant Email Marketing Platform.
-> Comprehensive technical developer documentation portal.
+> Self-hosted · Multi-tenant · High-performance email marketing infrastructure built for engineering teams who need full control.
 
-- **FastAPI Backend** • High-performance asynchronous RESTful APIs
-- **Next.js Frontend** • Sleek, responsive, interactive corporate dashboard
-- **RabbitMQ Dispatcher** • Low-latency, robust transactional campaign queuing
-- **SaaS Tenant Isolation** • Enterprise-grade PostgreSQL Row-Level Security (RLS)
+- ⚡ **FastAPI** — Async Python backend with sub-ms response times
+- ⚛️ **Next.js 14** — App Router dashboard with server components
+- 🐇 **RabbitMQ** — Transactional campaign dispatch queue
+- 🛡️ **Row-Level Security** — PostgreSQL multi-tenant isolation
+- 🔌 **REST API** — Full programmatic access to all platform features
 
-[Get Started](#introduction)
-[Visual Tour](#visual-tour-of-platform)
-[GitHub Repo](https://github.com/Rahul-pamula/ShrFlow-Handover)
+[Get Started →](#introduction) [View on GitHub ↗](https://github.com/Rahul-pamula/ShrFlow-Handover)
